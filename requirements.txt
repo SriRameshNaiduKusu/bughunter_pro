@@ -1,0 +1,10 @@
+requests
+beautifulsoup4
+dnspython
+python-whois
+shodan
+urllib3
+colorama
+jinja2
+tldextract
+concurrent-log-handler
