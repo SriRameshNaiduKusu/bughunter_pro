@@ -7,6 +7,7 @@ output/
 *.sqlite3
 *.db
 .idea/
+.idea
 *.egg-info/
 dist/
 build/
