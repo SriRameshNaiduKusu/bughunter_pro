@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/bughunter_pro.iml" filepath="$PROJECT_DIR$/.idea/bughunter_pro.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/bughunter-pro.iml" filepath="$PROJECT_DIR$/.idea/bughunter-pro.iml" />
     </modules>
   </component>
 </project>
