@@ -142,8 +142,8 @@ usage: bughunter [-h] -d DOMAIN [-m MODULES] [--full] [-t THREADS]
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/bughunter-pro.git
-cd bughunter-pro
+git clone https://github.com/SriRameshNaiduKusu/bughunter_pro.git
+cd bughunter_pro
 
 # Run the automated installer
 chmod +x install.sh
@@ -162,8 +162,8 @@ The installer will:
 ### macOS
 
 ```bash
-git clone https://github.com/yourusername/bughunter-pro.git
-cd bughunter-pro
+git clone https://github.com/SriRameshNaiduKusu/bughunter_pro.git
+cd bughunter_pro
 chmod +x install.sh
 ./install.sh
 ```
@@ -176,8 +176,8 @@ chmod +x install.sh
 
 ```powershell
 # Run PowerShell as Administrator
-git clone https://github.com/yourusername/bughunter-pro.git
-cd bughunter-pro
+git clone https://github.com/SriRameshNaiduKusu/bughunter_pro.git
+cd bughunter_pro
 Set-ExecutionPolicy Bypass -Scope Process
 .\install.ps1
 ```
@@ -185,8 +185,8 @@ Set-ExecutionPolicy Bypass -Scope Process
 #### Option 2: CMD
 
 ```cmd
-git clone https://github.com/yourusername/bughunter-pro.git
-cd bughunter-pro
+git clone https://github.com/SriRameshNaiduKusu/bughunter_pro.git
+cd bughunter_pro
 install.bat
 ```
 
@@ -197,8 +197,8 @@ install.bat
 
 ```bash
 # Clone
-git clone https://github.com/yourusername/bughunter-pro.git
-cd bughunter-pro
+git clone https://github.com/SriRameshNaiduKusu/bughunter_pro.git
+cd bughunter_pro
 
 # Create virtual environment
 python3 -m venv venv
