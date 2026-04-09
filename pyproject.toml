@@ -42,6 +42,12 @@ dependencies = [
     "PySocks>=1.7.1",
     "stem>=1.8.0",
     "GitPython>=3.1.0",
+    "streamlit>=1.30.0",
+    "plotly>=5.18.0",
+    "pandas>=2.0.0",
+    "streamlit-agraph>=0.0.45",
+    "streamlit-option-menu>=0.3.6",
+    "watchdog>=3.0.0",
 ]
 
 [project.optional-dependencies]
@@ -53,16 +59,17 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/SriRameshNaiduKusu/bughunter-pro"
-Repository = "https://github.com/SriRameshNaiduKusu/bughunter-pro"
-Issues = "https://github.com/SriRameshNaiduKusu/bughunter-pro/issues"
+Homepage = "https://github.com/SriRameshNaiduKusu/bughunter_pro"
+Repository = "https://github.com/SriRameshNaiduKusu/bughunter_pro"
+Issues = "https://github.com/SriRameshNaiduKusu/bughunter_pro"
 
 [project.scripts]
 bughunter = "bughunter_pro.main:main"
 bughunter-install = "bughunter_pro.installer:main"
+bughunter-dashboard = "dashboard.app:main"
 
 [tool.setuptools.packages.find]
-include = ["bughunter_pro*"]
+include = ["bughunter_pro*", "dashboard*"]
 
 [tool.setuptools.package-data]
 bughunter_pro = ["wordlists/.gitkeep"]

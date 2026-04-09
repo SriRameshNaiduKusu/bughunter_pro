@@ -638,10 +638,15 @@ def main():
         flat_results[f"vuln_{category}"] = findings
 
     # JSON Report
+    # --- JSON Report (UPDATED with duration tracking) ---
     try:
         from bughunter_pro.reporting.json_report import JSONReporter
         json_reporter = JSONReporter(config)
-        json_path = json_reporter.generate(flat_results)
+        elapsed_so_far = time.time() - start_time
+        json_path = json_reporter.generate(
+            flat_results,
+            scan_duration=elapsed_so_far,
+        )
     except Exception as e:
         logger.error(f"JSON report generation failed: {e}")
 
@@ -700,6 +705,12 @@ def main():
     logger.info(f"Risk Score:        {risk_score}/100")
     logger.info(f"Reports saved in:  {config.output_dir}/")
     logger.info("=" * 60)
+
+    logger.info("")
+    logger.info("📊 To view reports in the dashboard:")
+    logger.info("   bughunter-dashboard")
+    logger.info("   Then open http://localhost:8501")
+    logger.info("")
 
     # Return exit code based on findings
     if severity_counts["CRITICAL"] > 0:
