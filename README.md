@@ -152,11 +152,8 @@ usage: bughunter [-h] -d DOMAIN [-m MODULES] [--full] [-t THREADS]
 ### Linux (Kali / Parrot / Ubuntu / Debian)
 
 ```bash
-# Clone the repository
 git clone https://github.com/SriRameshNaiduKusu/bughunter_pro.git
 cd bughunter_pro
-
-# Run the automated installer
 chmod +x install.sh
 ./install.sh
 ```
@@ -186,7 +183,6 @@ chmod +x install.sh
 #### Option 1: PowerShell (Recommended)
 
 ```powershell
-# Run PowerShell as Administrator
 git clone https://github.com/SriRameshNaiduKusu/bughunter_pro.git
 cd bughunter_pro
 Set-ExecutionPolicy Bypass -Scope Process
