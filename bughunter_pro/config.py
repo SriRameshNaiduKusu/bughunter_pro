@@ -28,8 +28,7 @@ class Config:
     max_retries: int = 3
     delay_between_requests: float = 0.1
     user_agent: str = (
-        "BugHunterPro/1.0 (Academic Security Research; "
-        "University of Hertfordshire)"
+        "BugHunterPro/1.0 (Academic Security Research)"
     )
     verify_ssl: bool = False
 

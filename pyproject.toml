@@ -3,14 +3,14 @@ requires = ["setuptools>=68.0", "wheel>=0.41.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "bughunter-pro"
+name = "bughunter_pro"
 version = "1.0.0"
 description = "Comprehensive security reconnaissance and vulnerability scanner for bug bounty hunters"
 readme = "README.md"
 license = {text = "MIT"}
 requires-python = ">=3.9"
 authors = [
-    {name = "Cyber Security Student", email = "student@herts.ac.uk"},
+    {name = "Sri Ramesh Naidu Kusu", email = "mailme@sriramesh.dev"},
 ]
 keywords = ["security", "bug-bounty", "reconnaissance", "vulnerability-scanner", "pentesting"]
 classifiers = [

@@ -44,7 +44,7 @@ class JSONReporter:
             "meta": {
                 "tool": "BugHunter Pro",
                 "version": "1.0.0",
-                "author": "University of Hertfordshire - Cyber Security",
+                "author": "Sri Ramesh Naidu Kusu",
                 "target": self.config.target_domain,
                 "base_url": self.config.base_url,
                 "scan_date": datetime.now().isoformat(),

@@ -43,15 +43,15 @@ class PostDevelopCommand(develop):
 
 
 setup(
-    name="bughunter-pro",
+    name="bughunter_pro",
     version="1.0.0",
     description="Comprehensive security reconnaissance and vulnerability scanner",
     long_description=open("README.md", encoding="utf-8").read()
     if __import__("os").path.exists("README.md") else "",
     long_description_content_type="text/markdown",
-    author="Cyber Security Student",
-    author_email="student@herts.ac.uk",
-    url="https://github.com/yourusername/bughunter-pro",
+    author="Sri Ramesh Naidu Kusu",
+    author_email="mailme@sriramesh.dev",
+    url="https://github.com/SriRameshNaiduKusu/bughunter_pro",
     license="MIT",
     packages=find_packages(),
     include_package_data=True,

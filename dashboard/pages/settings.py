@@ -143,8 +143,7 @@ def render(nav_state: dict) -> None:
 
     Comprehensive Security Reconnaissance & Vulnerability Scanner
 
-    Developed as an academic project for the
-    **University of Hertfordshire — Cyber Security Programme**
+    Developed as an academic project
 
     **Features:**
     - Subdomain enumeration (DNS brute-force, crt.sh, ThreatCrowd)

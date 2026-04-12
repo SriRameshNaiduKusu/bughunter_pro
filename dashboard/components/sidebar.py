@@ -84,7 +84,7 @@ def render_sidebar() -> dict:
 
     st.sidebar.markdown("---")
     st.sidebar.markdown(
-        "<small>University of Hertfordshire<br/>Cyber Security Project</small>",
+        "<small>Cyber Security Project</small>",
         unsafe_allow_html=True,
     )
 

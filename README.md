@@ -14,28 +14,18 @@
 
 *An all-in-one command-line security tool and interactive dashboard for bug bounty hunters and penetration testers*
 
-**University of Hertfordshire — Cyber Security Academic Project**
 
----
 
-[Features](#-features) •
-[Installation](#-installation) •
-[Quick Start](#-quick-start) •
-[Dashboard](#-streamlit-dashboard) •
-[Modules](#-modules) •
-[Architecture](#-architecture) •
-[Configuration](#%EF%B8%8F-configuration) •
-[Contributing](#-contributing)
 
 </div>
 
 ---
 
-## 📋 Table of Contents
+## Table of Contents
 
-- [Features](#-features)
+- [Features](#features)
 - [Usage](#usage)
-- [Installation](#-installation)
+- [Installation](#installation)
   - [Linux (Kali / Parrot / Ubuntu)](#linux-kali--parrot--ubuntu--debian)
   - [macOS](#macos)
   - [Windows](#windows)
@@ -47,18 +37,18 @@
   - [Vulnerability Scanners](#vulnerability-scanners)
   - [Intelligence](#intelligence)
   - [Reporting](#reporting)
-- [Tor Integration](#-tor-integration)
-- [SecLists Integration](#-seclists-integration)
-- [Command Reference](#-command-reference)
-- [Report Management](#-report-management)
-- [Legal Disclaimer](#%EF%B8%8F-legal-disclaimer)
-- [Contributing](#-contributing)
-- [Acknowledgements](#-acknowledgements)
-- [License](#-license)
+- [Tor Integration](#tor-integration)
+- [SecLists Integration](#seclists-integration)
+- [Command Reference](#command-reference)
+- [Report Management](#report-management-1)
+- [Legal Disclaimer](#legal-disclaimer)
+- [Contributing](#contributing)
+- [Acknowledgements](#acknowledgements)
+- [License](#license)
 
 ---
 
-## ✨ Features
+## Features
 
 ### 🔍 Reconnaissance
 | Feature | Description |
@@ -126,11 +116,32 @@ usage: bughunter [-h] -d DOMAIN [-m MODULES] [--full] [-t THREADS]
                  [--api-wordlist PATH]
                  [-o OUTPUT] [--no-html] [-v]
 ```
+|Option |	Default	| Description |
+|-------|-------------|-------------|
+|-d, --domain |	required |	Target domain |   
+|-m, --modules |	all	| Comma-separated module list|
+|--full	| —	 | Run all modules |
+| -t, --threads	 | 20 |	Concurrent threads |
+|--timeout |	10 |	Request timeout (seconds) |
+|--delay |	0.1	| Delay between requests (seconds) |
+|--tor |	— |	Enable Tor routing|
+|--tor-port	| 9050 |	Tor SOCKS5 port|
+|--tor-renew |	50 |	Renew circuit every N requests|
+|--shodan-key |	— |	Shodan API key|
+|--seclists-size | 	medium |	Wordlist size (small/medium/large)|
+|-o, --output |	bughunter_output |	Output directory|
+|-v, --verbose |	— |	Debug logging|
 
+
+### Environment Variables
+
+|Variable|	Description|
+|---------|-------------|
+|SHODAN_API_KEY	| Shodan API key (alternative to --shodan-key)|
                  
 ---
-
-## 🚀 Installation
+---
+## Installation
 
 ### Prerequisites
 
@@ -215,7 +226,7 @@ bughunter-install
 # Verify
 bughunter --help
 ```
-
+---
 ## Quick Start
 
 
@@ -235,6 +246,7 @@ bughunter -d netflix.com --full --tor -o reports/netflix
 # View all reports in dashboard
 bughunter-dashboard
 ```
+---
 
 ## Streamlit Dashboard
 
@@ -293,6 +305,7 @@ bughunter-dashboard
 # → Select zomato.com (Day 1) vs zomato.com (Day 3)
 # → See what improved!
 ```
+---
 
 ## Modules
 
@@ -350,3 +363,154 @@ All scans automatically generate:
 - HTML report — Self-contained with interactive graph 
 - Dashboard entry — Viewable in Streamlit dashboard
 
+---
+
+## Tor Integration
+
+|Platform	| Behavior |
+|---------|-------------|
+|Linux	|Auto-detects, installs (if needed), and starts Tor service|
+|macOS |	Auto-detects via Homebrew, starts Tor service|
+|Windows |	Skips auto-start; uses Tor if manually running|
+
+#### Tor Features
+- Automatic setup — Detects OS, installs Tor, starts service 
+- Connection verification — Confirms traffic routes through Tor 
+- Circuit renewal — Rotates IP address during scans 
+- Graceful fallback — Continues without Tor if setup fails
+
+#### Verify Tor Connection
+```bash
+bughunter -d example.com --tor -v
+
+# Look for:
+# [TOR]  Tor is working! Tor IP: x.x.x.x (Original: y.y.y.y)
+```
+---
+
+## SecLists Integration
+BugHunter Pro uses SecLists — the
+security tester's companion collection of wordlists.
+
+### Wordlists Used
+
+|Category | 	SecLists Path                                       |	Entries | 
+|---------|------------------------------------------------------|---------|
+|Subdomains (small)	| Discovery/DNS/subdomains-top1million-5000.txt	       | 5,000|
+|Subdomains (medium)	| Discovery/DNS/subdomains-top1million-20000.txt	      | 20,000  |
+|Subdomains (large)	| Discovery/DNS/subdomains-top1million-110000.txt	     | 110,000                                         |
+|Directories	| Discovery/Web-Content/directory-list-2.3-medium.txt	 | 220,000+                                         |
+|API Endpoints	| Discovery/Web-Content/api/api-endpoints.txt	         | 1,000+                                               |
+|SQLi Payloads	| Fuzzing/SQLi/Generic-SQLi.txt	                       | 260+                                                 |
+|XSS Payloads	| Fuzzing/XSS/XSS-Jhaddix.txt	                         | 2,600+                                               |
+
+### Manage SecLists
+```bash
+bughunter-install              # Download/update SecLists
+bughunter-install --info       # Show available wordlists
+bughunter-install --force      # Force re-download
+bughunter-install --fallback-only  # Minimal wordlists only
+```
+
+---
+## Command Reference
+
+### Sacaning
+```bash
+# Full scan with Tor
+bughunter -d target.com --full --tor
+
+# Reconnaissance only
+bughunter -d target.com -m recon --tor
+
+# Only vulnerability scanning
+bughunter -d target.com -m scan --tor
+
+# Specific modules
+bughunter -d target.com -m recon,sqli,xss --tor
+
+# With Shodan
+bughunter -d target.com --full --tor --shodan-key YOUR_KEY
+
+# Large wordlists
+bughunter -d target.com --full --tor --seclists-size large
+
+# High-performance
+bughunter -d target.com --full --tor -t 50 --delay 0.05
+
+# Stealth mode (slow and careful)
+bughunter -d target.com --full --tor -t 5 --delay 1.0
+```
+### Dashboard
+```bash
+# Start dashboard
+bughunter-dashboard
+
+# Custom port
+streamlit run dashboard/app.py --server.port 9090
+```
+
+### Report Management
+```bash
+# View wordlist info
+bughunter-install --info
+
+# All reports are stored in: ~/.bughunter_pro/reports/
+# Manage via dashboard Settings page
+```
+---
+## Report Management
+### Report Storage
+All scan reports are automatically saved to:
+```bash
+~/.bughunter_pro/reports/
+├── index.json                          # Report index
+├── example.com_20240115_143022.json     # Full report
+├── example.com_20240114_091500.json    # Full report
+└── example.com_20240116_100000.json     # Re-scan report
+```
+### Accessing Reports
+
+1. Dashboard (recommended): bughunter-dashboard
+2. JSON files: Check ~/.bughunter_pro/reports/
+3. Output directory: Check bughunter_output/ in CWD
+4. HTML report: Open the .html file in any browser
+---
+## Legal Disclaimer
+> ⚠️ IMPORTANT: This tool is designed for AUTHORIZED security testing ONLY.
+
+- Always obtain written permission before scanning any target 
+- Only scan systems you own or have explicit authorization to test 
+- Unauthorized scanning is illegal in most jurisdictions 
+- This tool is developed for educational purposes as part of an academic project 
+- The developers are not responsible for any misuse of this tool 
+- Bug bounty hunters: Always follow the program's rules of engagement 
+- Comply with all applicable local, national, and international laws
+
+---
+
+## Contributing
+
+**Contributions are welcome! This is an academic project, but improvements are appreciated.**
+
+---
+
+## Acknowledgements
+
+- **[SecLists](https://github.com/danielmiessler/SecLists)** — Daniel Miessler's wordlist collection
+- **[Shodan](https://www.shodan.io/)** — Internet-connected device search engine
+- **[Tor Project](https://www.torproject.org/)** — Anonymous communication network
+- **[Streamlit](https://streamlit.io/)** — Python web application framework
+- **[Plotly](https://plotly.com/)** — Interactive charting library
+- **[vis.js](https://visjs.org/)** — Network graph visualization
+- **[Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/)** — HTML parsing
+- **[dnspython](https://www.dnspython.org/)** — DNS toolkit for Python
+
+---
+## License
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
+
+---
+<h2 align="center" >
+Made with ❤️ for the Cyber Security community
+</h2>

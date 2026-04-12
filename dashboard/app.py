@@ -24,12 +24,11 @@ def configure_page():
         layout="wide",
         initial_sidebar_state="expanded",
         menu_items={
-            "Get Help": "https://github.com/yourusername/bughunter-pro",
-            "Report a Bug": "https://github.com/yourusername/bughunter-pro/issues",
+            "Get Help": "https://github.com/SriRameshNaiduKusu/bughunter_pro",
+            "Report a Bug": "https://github.com/SriRameshNaiduKusu/bughunter_pro/issues",
             "About": (
                 "BugHunter Pro v1.0 — Comprehensive Security "
                 "Reconnaissance & Vulnerability Scanner\n\n"
-                "University of Hertfordshire — Cyber Security Programme"
             ),
         },
     )

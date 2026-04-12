@@ -501,7 +501,6 @@ class HTMLReporter:
 
     <footer>
         <p>BugHunter Pro v1.0 - Academic Security Research Tool</p>
-        <p>University of Hertfordshire - Cyber Security Programme</p>
         <p>Report generated: {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}</p>
     </footer>
 

@@ -2,7 +2,6 @@
 """
 BugHunter Pro - Comprehensive Security Reconnaissance & Vulnerability Scanner
 ==============================================================================
-University of Hertfordshire - Cyber Security Academic Project
 
 Usage:
     bughunter -d <domain> [options]
